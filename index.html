@@ -4,12 +4,203 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How Algorithms See Your Neighborhood</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>How Algorithms See Your Neighborhood</h1>
-  <p>This is my Project 3 prototype about algorithmic bias, crime data, and Boston neighborhoods.</p>
+  <header class="hero">
+    <div class="container">
+      <p class="tag">Project 3 Prototype</p>
+      <h1>How Algorithms See Your Neighborhood</h1>
+      <p class="subtitle">
+        This interactive infographic explores how crime data can shape biased
+        algorithmic perceptions of different parts of Boston.
+      </p>
+    </div>
+  </header>
 
-  <h2>Project Focus</h2>
-  <p>This site will become an interactive infographic that helps explain how data-driven systems can shape unfair perceptions of neighborhoods.</p>
+  <main class="container">
+    <section class="card">
+      <h2>What is this project about?</h2>
+      <p>
+        This project looks at how data-driven systems can turn crime statistics
+        into simplified assumptions about neighborhoods. Even when data looks
+        objective, the way it is grouped, interpreted, and used can reinforce bias.
+      </p>
+    </section>
+
+    <section class="grid-two">
+      <div class="card">
+        <h2>How bias happens</h2>
+        <ul>
+          <li>Crime data gets grouped by place</li>
+          <li>Algorithms may treat high counts as high “risk”</li>
+          <li>Context gets removed</li>
+          <li>Entire communities can be judged unfairly</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Why this matters</h2>
+        <p>
+          For Boston students and residents, neighborhood reputation already affects
+          where people live, travel, and feel safe. This project asks what happens
+          when algorithms strengthen those assumptions.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+  <h2>What the data shows at a glance</h2>
+  <p class="section-intro">
+    These totals come from the combined Boston crime data files from 2015–2022.
+    High counts may look objective, but numbers alone do not explain context,
+    neighborhood size, policing patterns, or how risk gets interpreted.
+  </p>
+
+  <div class="summary-grid">
+    <div class="summary-box">
+      <h3>Highest recorded totals</h3>
+      <ul>
+        <li><strong>B2</strong> — 99,635 incidents</li>
+        <li><strong>C11</strong> — 86,111 incidents</li>
+        <li><strong>D4</strong> — 84,927 incidents</li>
+      </ul>
+    </div>
+
+    <div class="summary-box">
+      <h3>Lower recorded totals</h3>
+      <ul>
+        <li><strong>A7</strong> — 27,895 incidents</li>
+        <li><strong>E5</strong> — 29,050 incidents</li>
+      </ul>
+    </div>
+
+    <div class="summary-box">
+      <h3>What algorithms might do</h3>
+      <p>
+        A system could turn these totals into rankings, flags, or risk scores.
+        That can make the output seem neutral, even when it hides important social
+        and geographic context.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <section class="card">
+      <h2>Explore Boston Districts</h2>
+      <p class="section-intro">
+        Click a district below to see an example of how a system might interpret
+        the data and why that interpretation can be misleading.
+      </p>
+
+      <p class="small-note">
+        District totals are based on combined Boston crime data (2015–2022) processed in Python.
+      </p>
+
+      <div class="interactive-layout">
+        <div class="district-buttons">
+          <button class="district-btn" onclick="showDistrict('A1')">A1</button>
+          <button class="district-btn" onclick="showDistrict('A7')">A7</button>
+          <button class="district-btn" onclick="showDistrict('B2')">B2</button>
+          <button class="district-btn" onclick="showDistrict('B3')">B3</button>
+          <button class="district-btn" onclick="showDistrict('C6')">C6</button>
+          <button class="district-btn" onclick="showDistrict('C11')">C11</button>
+          <button class="district-btn" onclick="showDistrict('D4')">D4</button>
+          <button class="district-btn" onclick="showDistrict('D14')">D14</button>
+          <button class="district-btn" onclick="showDistrict('E5')">E5</button>
+          <button class="district-btn" onclick="showDistrict('E13')">E13</button>
+          <button class="district-btn" onclick="showDistrict('E18')">E18</button>
+        </div>
+
+        <div class="info-panel" id="info-panel">
+          <h3>Select a district</h3>
+          <p>
+            Start by clicking one of the district buttons. This panel will update
+            with sample interpretation text.
+          </p>
+        </div>
+      </div>
+    </section>
+
+<section class="card">
+  <h2>Interactive map (prototype)</h2>
+  <p class="section-intro">
+    This section will include an interactive map of Boston districts. Users will
+    be able to click on locations and explore how data is interpreted and where
+    bias may emerge.
+  </p>
+
+  <div class="map-placeholder">
+     <div class="map-grid-lines"></div>
+      <div class="map-overlay">
+      <p>Interactive map coming soon</p>
+    </div>
+  </div>
+
+  <p class="small-note">
+    The final version will use cleaned district-level data and interactive
+    elements to connect geographic location with algorithmic interpretation.
+  </p>
+</section>
+
+    <section class="card">
+  <h2>Sources, disclaimer, and further reading</h2>
+
+  <p>
+    This project combines public crime data with research on algorithmic bias,
+    fairness, and policing. The district totals shown here are meant to illustrate
+    how data can be interpreted by systems, not to define any neighborhood or community.
+    Crime counts alone do not capture structural inequality, over-policing, underreporting,
+    population differences, or lived experience.
+  </p>
+
+  <div class="sources-grid">
+    <div class="source-box">
+      <h3>Dataset</h3>
+      <p>
+        Boston crime data (2015–2022) from Kaggle, cleaned and summarized in Python
+        for this project.
+      </p>
+      <a href="https://www.kaggle.com/datasets/christianjungmann/boston-incidents-2015-2022" target="_blank">
+        View the dataset
+      </a>
+    </div>
+
+    <div class="source-box">
+      <h3>Research background</h3>
+      <p>
+        This project builds on my earlier research about bias in algorithmic
+        criminal justice systems and public interpretations of data.
+      </p>
+      <ul>
+        <li>Berk, Kuchibhotla, & Tchetgen Tchetgen (2024)</li>
+        <li>Huq (2019)</li>
+        <li>McElreath, DioGuardi, & Doss (2022)</li>
+        <li>Hu (2026)</li>
+      </ul>
+    </div>
+
+    <div class="source-box">
+      <h3>Read more</h3>
+      <p>
+        Additional sources from Project 2 are listed below for readers who want
+        more context on fairness, policing technologies, and trustworthy AI.
+      </p>
+      <ul class="reading-list">
+        <li>Berk et al. (2024)</li>
+        <li>Castro-Toledo & Gómez-Bellvís (2026)</li>
+        <li>Chen & Dai (2026)</li>
+        <li>Chen et al. (2026)</li>
+        <li>Ferdaus et al. (2026)</li>
+        <li>Hu (2026)</li>
+        <li>Huq (2019)</li>
+        <li>McElreath et al. (2022)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
