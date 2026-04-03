@@ -1,0 +1,5 @@
+Crime-rates/
+cleaned-data/
+__pycache__/
+.DS_Store
+*.csv
