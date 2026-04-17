@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-} 
+}
 
 body {
   margin: 0;
@@ -24,7 +24,7 @@ body {
 
 .tag {
   display: inline-block;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   padding: 8px 14px;
   border-radius: 999px;
   font-size: 14px;
@@ -39,6 +39,7 @@ body {
 .subtitle {
   max-width: 700px;
   font-size: 18px;
+  line-height: 1.7;
 }
 
 main {
@@ -50,7 +51,7 @@ main {
   border-radius: 18px;
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .grid-two {
@@ -111,6 +112,7 @@ main {
 }
 
 @media (max-width: 800px) {
+
   .grid-two,
   .interactive-layout {
     grid-template-columns: 1fr;
@@ -229,9 +231,9 @@ main {
 .map-grid-lines {
   position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -407,7 +409,7 @@ main {
 
 .footer-tag {
   display: inline-block;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   padding: 8px 14px;
   border-radius: 999px;
   font-size: 14px;
@@ -435,7 +437,7 @@ main {
 }
 
 .footer-meta span {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   padding: 8px 12px;
   border-radius: 999px;
 }
@@ -514,7 +516,7 @@ main {
 
 .factor-box:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .factor-info {
@@ -624,5 +626,148 @@ main {
 
   .bar-value {
     font-size: 13px;
+  }
+}
+
+.card-emphasis {
+  background: linear-gradient(135deg,
+      #e0e7ff,
+      #f1f5f9);
+  border: 1px solid #c7d2fe;
+}
+
+.card-emphasis .factor-box {
+  background: white;
+  border: 1px solid #e0e7ff;
+}
+
+.card-emphasis {
+  position: relative;
+}
+
+.card-emphasis::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(to right, #2563eb, #6366f1);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.card-emphasis .interactive-layout {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #e0e7ff;
+}
+
+.card-emphasis .district-btn {
+  background: #e0f2fe;
+}
+
+.card-emphasis .district-btn:hover {
+  background: #bfdbfe;
+}
+
+.reflection-section .small-note {
+  max-width: 850px;
+}
+
+.matching-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.matching-column h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+.matching-column {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid #dbe4ff;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.match-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+  padding: 16px 18px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.match-card:hover {
+  transform: translateY(-2px);
+  border-color: #93c5fd;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.match-card.selected {
+  border-color: #2563eb;
+  background: #dbeafe;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.match-card.correct {
+  border-color: #10b981;
+  background: #dcfce7;
+  color: #065f46;
+  cursor: default;
+}
+
+.match-card.wrong {
+  border-color: #ef4444;
+  background: #fee2e2;
+}
+
+.match-card.matched {
+  opacity: 0.85;
+}
+
+.match-status {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #eef2ff;
+  color: #312e81;
+  font-weight: 500;
+}
+
+.match-reflection {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border: 1px solid #c7d2fe;
+}
+
+.match-reflection h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .matching-board {
+    grid-template-columns: 1fr;
   }
 }

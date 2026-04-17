@@ -91,8 +91,7 @@ function renderInfoPanel(districtCode) {
   if (!info) {
     panel.innerHTML = `
       <h3>District ${districtCode}</h3>
-      <p><strong>Total recorded incidents:</strong> ${
-        districtCounts.has(districtCode) ? formatNumber(districtCounts.get(districtCode)) : "Not available"
+      <p><strong>Total recorded incidents:</strong> ${districtCounts.has(districtCode) ? formatNumber(districtCounts.get(districtCode)) : "Not available"
       }</p>
       <p>No interpretation text has been added for this district yet.</p>
     `;
@@ -124,12 +123,12 @@ function setActiveDistrict(districtCode, source = "button") {
   });
 
   d3.selectAll(".district-shape")
-  .classed("active", false)
-  .style("opacity", 0.55);
+    .classed("active", false)
+    .style("opacity", 0.55);
 
   d3.select(`#shape-${districtCode.replace(/[^A-Za-z0-9]/g, "")}`)
-  .classed("active", true)
-  .style("opacity", 1);
+    .classed("active", true)
+    .style("opacity", 1);
 
   renderInfoPanel(districtCode);
 }
@@ -204,7 +203,7 @@ async function loadMap() {
 
   const svg = d3
     .select("#map")
-    .html("") 
+    .html("")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("preserveAspectRatio", "xMidYMid meet");
@@ -288,3 +287,78 @@ loadMap().catch((error) => {
     `;
   }
 });
+
+let selectedLeftCard = null;
+let selectedRightCard = null;
+let correctMatches = 0;
+
+const leftCards = document.querySelectorAll(".left-card");
+const rightCards = document.querySelectorAll(".right-card");
+const matchStatus = document.getElementById("match-status");
+const matchReflection = document.getElementById("match-reflection");
+
+leftCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    if (card.classList.contains("correct")) return;
+
+    leftCards.forEach((c) => {
+      if (!c.classList.contains("correct")) c.classList.remove("selected");
+    });
+
+    selectedLeftCard = card;
+    card.classList.add("selected");
+    checkMatchAttempt();
+  });
+});
+
+rightCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    if (card.classList.contains("correct")) return;
+
+    rightCards.forEach((c) => {
+      if (!c.classList.contains("correct")) c.classList.remove("selected");
+    });
+
+    selectedRightCard = card;
+    card.classList.add("selected");
+    checkMatchAttempt();
+  });
+});
+
+function checkMatchAttempt() {
+  if (!selectedLeftCard || !selectedRightCard) return;
+
+  const leftMatch = selectedLeftCard.dataset.match;
+  const rightMatch = selectedRightCard.dataset.match;
+
+  if (leftMatch === rightMatch) {
+    selectedLeftCard.classList.remove("selected");
+    selectedRightCard.classList.remove("selected");
+
+    selectedLeftCard.classList.add("correct", "matched");
+    selectedRightCard.classList.add("correct", "matched");
+
+    matchStatus.textContent = "Matched. Context changes how data should be interpreted.";
+    correctMatches++;
+
+    selectedLeftCard = null;
+    selectedRightCard = null;
+
+    if (correctMatches === 4) {
+      matchStatus.textContent = "All matches completed. Reflection unlocked below.";
+      matchReflection.classList.remove("hidden");
+    }
+  } else {
+    selectedLeftCard.classList.add("wrong");
+    selectedRightCard.classList.add("wrong");
+
+    matchStatus.textContent = "Not quite. Try again and think about what the data might not show.";
+
+    setTimeout(() => {
+      selectedLeftCard.classList.remove("selected", "wrong");
+      selectedRightCard.classList.remove("selected", "wrong");
+      selectedLeftCard = null;
+      selectedRightCard = null;
+    }, 700);
+  }
+}

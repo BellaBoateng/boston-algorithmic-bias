@@ -1,92 +1,96 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Shapes Perception. Perception Shapes Reality.</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header class="hero">
     <div class="container">
-      <p class="tag">Project 3 Prototype</p>
+      <p class="tag">Public writing</p>
       <h1>Data Shapes Perception. Perception Shapes Reality.</h1>
       <p class="subtitle">
-        This webpage explores how crime data can shape biased
-        algorithmic perceptions of different parts of Boston.
+        This project explores how data-driven systems can turn crime statistics into
+        simplified assumptions about Boston districts. Even when data looks objective,
+        the way it is grouped, interpreted, and used can reinforce bias.
       </p>
     </div>
   </header>
 
   <main class="container">
+
+    <section class="card card-emphasis">
+      <h2>What shapes crime data?</h2>
+      <p class="section-intro">
+        Crime totals reflect more than incidents. They are shaped by reporting,
+        policing patterns, and structural factors that algorithms may ignore.
+      </p>
+
+      <div class="factors-grid">
+        <div class="factor-box" onclick="showFactor('policing')">
+          <h3>Policing density</h3>
+          <p>More policing often leads to more recorded incidents.</p>
+        </div>
+
+        <div class="factor-box" onclick="showFactor('population')">
+          <h3>Population density</h3>
+          <p>Busier areas naturally produce more reports.</p>
+        </div>
+
+        <div class="factor-box" onclick="showFactor('reporting')">
+          <h3>Reporting bias</h3>
+          <p>Some communities report incidents differently.</p>
+        </div>
+      </div>
+
+      <div id="factor-info" class="factor-info">
+        Click a factor to explore how it shapes interpretation.
+      </div>
+    </section>
+
     <section class="card">
-      <h2>What is this project about?</h2>
-      <p>
-        This project looks at how data-driven systems can turn crime statistics
-        into simplified assumptions about neighborhoods. Even when data looks
-        objective, the way it is grouped, interpreted, and used can reinforce bias.
+      <h2>Interactive map</h2>
+      <p class="section-intro">
+      <p class="section-intro">
+        Hover over a district to preview incident totals, or click to explore how those
+        numbers can turn into broader assumptions about place, risk, and community identity.
+        This view shows totals rather than per capita rates.
+      </p>
+      </p>
+
+      <div class="map-card">
+        <div class="map-wrapper">
+          <div id="map"></div>
+          <div id="map-tooltip"></div>
+        </div>
+
+        <div class="map-legend">
+          <h3>Incident totals</h3>
+          <div class="legend-scale">
+            <span>Lower</span>
+            <div class="legend-gradient"></div>
+            <span>Higher</span>
+          </div>
+          <p class="small-note">
+            Colors show relative totals from the cleaned 2015–2022 dataset.
+          </p>
+        </div>
+      </div>
+
+      <p class="small-note">
+      <p class="small-note">
+        District boundaries come from the Boston Police Districts GeoJSON. This map shows total reported incidents by
+        district, not population-adjusted rates. A per capita view could change how districts compare by accounting for
+        differences in population size and activity density.
+      </p>
       </p>
     </section>
 
-    <section class="grid-two">
-      <div class="card">
-        <h2>How bias happens</h2>
-        <ul>
-          <li>Crime data gets grouped by place</li>
-          <li>Algorithms may treat high counts as high “risk”</li>
-          <li>Context gets removed</li>
-          <li>Entire communities can be judged unfairly</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Why this matters</h2>
-        <p>
-          For Boston students and residents, neighborhood reputation already affects
-          where people live, travel, and feel safe. This project asks what happens
-          when algorithms strengthen those assumptions.
-        </p>
-      </div>
-    </section>
-
-    <section class="card">
-  <h2>What the data shows at a glance</h2>
-  <p class="section-intro">
-    These totals come from the combined Boston crime data files from 2015–2022.
-    High counts may look objective, but numbers alone do not explain context,
-    neighborhood size, policing patterns, or how risk gets interpreted.
-  </p>
-
-  <div class="summary-grid">
-    <div class="summary-box summary-blue">
-      <h3>Highest recorded totals</h3>
-      <ul>
-        <li><strong>B2</strong> — 99,635 incidents</li>
-        <li><strong>C11</strong> — 86,111 incidents</li>
-        <li><strong>D4</strong> — 84,927 incidents</li>
-      </ul>
-    </div>
-
-    <div class="summary-box summary-gold">
-      <h3>Lower recorded totals</h3>
-      <ul>
-        <li><strong>A7</strong> — 27,895 incidents</li>
-        <li><strong>E5</strong> — 29,050 incidents</li>
-      </ul>
-    </div>
-
-    <div class="summary-box summary-purple">
-      <h3>What algorithms might do</h3>
-      <p> 
-        A system could turn these totals into rankings, flags, or risk scores.
-        That can make the output seem neutral, even when it hides important social
-        and geographic context.
-      </p>
-    </div>
-  </div>
-</section>
-
-    <section class="card">
+    <section class="card card-emphasis">
       <h2>Explore Boston Districts</h2>
       <p class="section-intro">
         Click a district below to see an example of how a system might interpret
@@ -122,258 +126,292 @@
       </div>
     </section>
 
-<section class="card">
-  <h2>Interactive map</h2>
-  <p class="section-intro">
-    Hover over a district to preview incident totals, or click to explore how those 
-    numbers can turn into broader assumptions about place, risk, and community identity.
-  </p>
-
-  <div class="map-card">
-    <div class="map-wrapper">
-      <div id="map"></div>
-      <div id="map-tooltip"></div>
-    </div>
-
-    <div class="map-legend">
-      <h3>Incident totals</h3>
-      <div class="legend-scale">
-        <span>Lower</span>
-        <div class="legend-gradient"></div>
-        <span>Higher</span>
-      </div>
-      <p class="small-note">
-        Colors show relative totals from the cleaned 2015–2022 dataset.
+    <section class="card">
+      <h2>What the data shows at a glance</h2>
+      <p class="section-intro">
+        These totals come from the combined Boston crime data files from 2015–2022.
+        High counts may look objective, but numbers alone do not explain context,
+        neighborhood size, policing patterns, or how risk gets interpreted.
       </p>
-    </div>
-  </div>
 
-  <p class="small-note">
-    District boundaries come from the Boston Police Districts GeoJSON. 
-    This map is meant to show how data gets spatially interpreted, not to define any district by one number.
-  </p>
-</section>
-
-<section class="card">
-  <h2>What a ranking might emphasize</h2>
-  <p class="section-intro">
-    These five districts represent the highest totals in the dataset. Visual rankings like this quickly draw attention to 
-    the top values, emphasizing contrast and order while leaving out the context behind why those differences exist.
-  </p>
-
-  <div class="bar-chart-card">
-    <div class="bar-chart">
-      <div class="bar-row">
-        <span class="bar-label">B2</span>
-        <div class="bar-track">
-          <div class="bar-fill bar-blue" style="width: 100%;"></div>
+      <div class="summary-grid">
+        <div class="summary-box summary-blue">
+          <h3>Highest recorded totals</h3>
+          <ul>
+            <li><strong>B2</strong> — 99,635 incidents</li>
+            <li><strong>C11</strong> — 86,111 incidents</li>
+            <li><strong>D4</strong> — 84,927 incidents</li>
+          </ul>
         </div>
-        <span class="bar-value">99,635</span>
-      </div>
 
-      <div class="bar-row">
-        <span class="bar-label">C11</span>
-        <div class="bar-track">
-          <div class="bar-fill bar-gold" style="width: 86%;"></div>
+        <div class="summary-box summary-gold">
+          <h3>Lower recorded totals</h3>
+          <ul>
+            <li><strong>A7</strong> — 27,895 incidents</li>
+            <li><strong>E5</strong> — 29,050 incidents</li>
+          </ul>
         </div>
-        <span class="bar-value">86,111</span>
-      </div>
 
-      <div class="bar-row">
-        <span class="bar-label">D4</span>
-        <div class="bar-track">
-          <div class="bar-fill bar-purple" style="width: 85%;"></div>
+        <div class="summary-box summary-purple">
+          <h3>What algorithms might do</h3>
+          <p>
+            A system could turn these totals into rankings, flags, or risk scores.
+            That can make the output seem neutral, even when it hides important social
+            and geographic context.
+          </p>
         </div>
-        <span class="bar-value">84,927</span>
       </div>
-
-      <div class="bar-row">
-        <span class="bar-label">A1</span>
-        <div class="bar-track">
-          <div class="bar-fill bar-green" style="width: 73%;"></div>
-        </div>
-        <span class="bar-value">72,755</span>
-      </div>
-
-      <div class="bar-row">
-        <span class="bar-label">B3</span>
-        <div class="bar-track">
-          <div class="bar-fill bar-pink" style="width: 72%;"></div>
-        </div>
-        <span class="bar-value">72,162</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="card">
-  <h2>Key takeaways</h2>
-  <p class="section-intro">
-    These patterns are not just about numbers. They show how data can shape assumptions
-    about people, place, and safety when context is left out.
-  </p>
-
-  <div class="takeaways-grid">
-    <div class="takeaway-box takeaway-blue">
-      <h3>Data is not neutral in practice</h3>
-      <p>
-        Even when crime data looks objective, the way it is grouped, ranked, and interpreted
-        can lead to biased conclusions about entire districts.
-      </p>
-    </div>
-
-    <div class="takeaway-box takeaway-gold">
-      <h3>One number cannot define a place</h3>
-      <p>
-        Incident totals do not capture community history, reporting patterns, structural inequality,
-        or the lived realities of the people who live there.
-      </p>
-    </div>
-
-    <div class="takeaway-box takeaway-green">
-      <h3>Algorithms can reinforce stereotypes</h3>
-      <p>
-        When systems turn district data into simplified labels like “high risk,” they can reproduce
-        existing assumptions instead of helping people understand a place more fully.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="card">
-  <h2>What shapes crime data?</h2>
-  <p class="section-intro">
-    Crime totals reflect more than incidents. They are shaped by reporting,
-    policing patterns, and structural factors that algorithms may ignore.
-  </p>
-
-  <div class="factors-grid">
-
-    <div class="factor-box" onclick="showFactor('policing')">
-      <h3>Policing density</h3>
-      <p>More policing often leads to more recorded incidents.</p>
-    </div>
-
-    <div class="factor-box" onclick="showFactor('population')">
-      <h3>Population density</h3>
-      <p>Busier areas naturally produce more reports.</p>
-    </div>
-
-    <div class="factor-box" onclick="showFactor('reporting')">
-      <h3>Reporting bias</h3>
-      <p>Some communities report incidents differently.</p>
-    </div>
-
-  </div>
-
-  <div id="factor-info" class="factor-info">
-    Click a factor to explore how it shapes interpretation.
-  </div>
-</section>
+    </section>
 
     <section class="card">
-  <h2>Sources, disclaimer, and further reading</h2>
-
-  <p>
-    This project combines public crime data with research on algorithmic bias,
-    fairness, and policing. The district totals shown here are meant to illustrate
-    how data can be interpreted by systems, not to define any neighborhood or community.
-    Crime counts alone do not capture structural inequality, over-policing, underreporting,
-    population differences, or lived experience.
-  </p>
-
-  <div class="sources-grid">
-    <div class="source-box">
-      <h3>Dataset</h3>
-      <p>
-        Boston crime data (2015–2022) from Kaggle, cleaned and summarized in Python
-        for this project.
+      <h2>What a ranking might emphasize</h2>
+      <p class="section-intro">
+        These five districts represent the highest totals in the dataset. Visual rankings like this quickly draw
+        attention to
+        the top values, emphasizing contrast and order while leaving out the context behind why those differences exist.
       </p>
-      <a href="https://www.kaggle.com/datasets/christianjungmann/boston-incidents-2015-2022" target="_blank">
-        View the dataset
-      </a>
-    </div>
 
-    <div class="source-box">
-      <h3>Academic research</h3>
-      <ul class="reading-list">
-        <li>
-          <a href="https://doi.org/10.1177/00491241231155883" target="_blank">
-            Berk et al. (2024) — Improving fairness in criminal justice algorithmic risk assessments
-          </a>
-        </li>
+      <div class="bar-chart-card">
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">B2</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-blue" style="width: 100%;"></div>
+            </div>
+            <span class="bar-value">99,635</span>
+          </div>
 
-        <li>
-          <a href="https://doi.org/10.1007/s10611-025-10251-4" target="_blank">
-            Castro-Toledo & Gómez-Bellvís (2026) — Democratic use of technologies for urban security
-          </a>
-        </li>
+          <div class="bar-row">
+            <span class="bar-label">C11</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-gold" style="width: 86%;"></div>
+            </div>
+            <span class="bar-value">86,111</span>
+          </div>
 
-        <li>
-          <a href="https://doi.org/10.1007/s11417-025-09473-1" target="_blank">
-            Chen & Dai (2026) — Facial recognition in digital policing
-          </a>
-        </li>
+          <div class="bar-row">
+            <span class="bar-label">D4</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-purple" style="width: 85%;"></div>
+            </div>
+            <span class="bar-value">84,927</span>
+          </div>
 
-        <li>
-          <a href="https://doi.org/10.1007/s11417-025-09478-w" target="_blank">
-            Chen et al. (2026) — AI-powered robots in policing
-          </a>
-        </li>
+          <div class="bar-row">
+            <span class="bar-label">A1</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-green" style="width: 73%;"></div>
+            </div>
+            <span class="bar-value">72,755</span>
+          </div>
 
-        <li>
-          <a href="https://doi.org/10.1145/3777382" target="_blank">
-            Ferdaus et al. (2026) — Trustworthy AI review
-          </a>
-        </li>
+          <div class="bar-row">
+            <span class="bar-label">B3</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-pink" style="width: 72%;"></div>
+            </div>
+            <span class="bar-value">72,162</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <li>
-          <a href="https://doi.org/10.1145/3762199" target="_blank">
-            Hu (2026) — Fairness in machine learning
-          </a>
-        </li>
+    <section class="grid-two">
+      <div class="card">
+        <h2>How bias happens</h2>
+        <ul>
+          <li>Crime data gets grouped by place</li>
+          <li>Algorithms may treat high counts as high “risk”</li>
+          <li>Context gets removed</li>
+          <li>Entire communities can be judged unfairly</li>
+        </ul>
+      </div>
 
-        <li>
-          <a href="https://scholarship.law.duke.edu/dlj/vol68/iss6/1/"
-             target="_blank">
-            Huq (2019) — Racial equity in algorithmic criminal justice
-          </a>
-        </li>
+      <div class="card">
+        <h2>Why this matters</h2>
+        <p>
+          For Boston students and residents, neighborhood reputation already affects
+          where people live, travel, and feel safe. This project asks what happens
+          when algorithms strengthen those assumptions.
+        </p>
+      </div>
+    </section>
 
-        <li>
-          <a href="https://doi.org/10.4018/IJSSMET.298672" target="_blank">
-            McElreath et al. (2022) — Pre-crime prediction and bias
+    <section class="card">
+      <h2>Key takeaways</h2>
+      <p class="section-intro">
+        These patterns are not just about numbers. They show how data can shape assumptions
+        about people, place, and safety when context is left out.
+      </p>
+
+      <div class="takeaways-grid">
+        <div class="takeaway-box takeaway-blue">
+          <h3>Data is not neutral in practice</h3>
+          <p>
+            Even when crime data looks objective, the way it is grouped, ranked, and interpreted
+            can lead to biased conclusions about entire districts.
+          </p>
+        </div>
+
+        <div class="takeaway-box takeaway-gold">
+          <h3>One number cannot define a place</h3>
+          <p>
+            Incident totals do not capture community history, reporting patterns, structural inequality,
+            or the lived realities of the people who live there.
+          </p>
+        </div>
+
+        <div class="takeaway-box takeaway-green">
+          <h3>Algorithms can reinforce stereotypes</h3>
+          <p>
+            When systems turn district data into simplified labels like “high risk,” they can reproduce
+            existing assumptions instead of helping people understand a place more fully.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card card-emphasis reflection-section">
+      <h2>Bias in action</h2>
+      <p class="section-intro">
+        Match each data point with a possible explanation. This section asks you to pause
+        and consider how quickly numbers can turn into assumptions when context is missing.
+      </p>
+
+      <p class="small-note">
+        There may seem like there is one obvious answer, but crime data can often be interpreted
+        in multiple ways depending on what context is included or ignored.
+      </p>
+
+      <div class="matching-board">
+        <div class="matching-column">
+          <h3>Data point</h3>
+
+          <button class="match-card left-card" data-match="1">
+            High arrest rate in one district
+          </button>
+
+          <button class="match-card left-card" data-match="2">
+            Increased police presence
+          </button>
+
+          <button class="match-card left-card" data-match="3">
+            Lower reported crime in another district
+          </button>
+
+          <button class="match-card left-card" data-match="4">
+            More 911 calls from one neighborhood
+          </button>
+        </div>
+
+        <div class="matching-column">
+          <h3>Possible explanation</h3>
+
+          <button class="match-card right-card" data-match="2">
+            More officers can lead to more recorded incidents
+          </button>
+
+          <button class="match-card right-card" data-match="4">
+            Reporting may reflect visibility, trust, or access to emergency systems
+          </button>
+
+          <button class="match-card right-card" data-match="1">
+            It may reflect over-policing rather than greater danger
+          </button>
+
+          <button class="match-card right-card" data-match="3">
+            It could reflect underreporting, not necessarily lower harm
+          </button>
+        </div>
+      </div>
+
+      <div id="match-status" class="match-status">
+        Select one card from the left and one from the right to make a match.
+      </div>
+
+      <div id="match-reflection" class="match-reflection hidden">
+        <h3>Reflection</h3>
+        <p>
+          The point is not just whether you matched correctly. It is how easy it is to
+          turn data into a story. When algorithms do this at scale, they can reinforce
+          stereotypes, flatten context, and shape how entire communities are understood.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Sources, disclaimer, and further reading</h2>
+
+      <p>
+        This project combines public crime data with research on algorithmic bias,
+        fairness, and policing. The district totals shown here are meant to illustrate
+        how data can be interpreted by systems, not to define any neighborhood or community.
+        Crime counts alone do not capture structural inequality, over-policing, underreporting,
+        population differences, or lived experience.
+      </p>
+
+      <div class="sources-grid">
+        <div class="source-box">
+          <h3>Dataset</h3>
+          <p>
+            Boston crime data (2015–2022) from Kaggle, cleaned and summarized in Python
+            for this project.
+          </p>
+          <a href="https://www.kaggle.com/datasets/christianjungmann/boston-incidents-2015-2022" target="_blank">
+            View the dataset
           </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
+        </div>
+
+        <div class="source-box">
+          <h3>Academic research</h3>
+          <ul class="reading-list">
+            <li><a href="https://doi.org/10.1177/00491241231155883" target="_blank">Berk et al. (2024) — Improving
+                fairness in criminal justice algorithmic risk assessments</a></li>
+            <li><a href="https://doi.org/10.1007/s10611-025-10251-4" target="_blank">Castro-Toledo & Gómez-Bellvís
+                (2026) — Democratic use of technologies for urban security</a></li>
+            <li><a href="https://doi.org/10.1007/s11417-025-09473-1" target="_blank">Chen & Dai (2026) — Facial
+                recognition in digital policing</a></li>
+            <li><a href="https://doi.org/10.1007/s11417-025-09478-w" target="_blank">Chen et al. (2026) — AI-powered
+                robots in policing</a></li>
+            <li><a href="https://doi.org/10.1145/3777382" target="_blank">Ferdaus et al. (2026) — Trustworthy AI
+                review</a></li>
+            <li><a href="https://doi.org/10.1145/3762199" target="_blank">Hu (2026) — Fairness in machine learning</a>
+            </li>
+            <li><a href="https://scholarship.law.duke.edu/dlj/vol68/iss6/1/" target="_blank">Huq (2019) — Racial equity
+                in algorithmic criminal justice</a></li>
+            <li><a href="https://doi.org/10.4018/IJSSMET.298672" target="_blank">McElreath et al. (2022) — Pre-crime
+                prediction and bias</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="script.js"></script>
 
   <footer class="footer-hero">
-  <div class="container footer-hero-content">
+    <div class="container footer-hero-content">
 
-    <p class="footer-tag">Project 3 • Public Writing</p>
+      <p class="footer-tag">Project 3 • Public Writing</p>
 
-    <h2>Data Shapes Perception. Perception Shapes Reality.</h2>
+      <h2>Data Shapes Perception. Perception Shapes Reality.</h2>
 
-    <p class="footer-subtitle">
-      This project explores how crime data, when interpreted by algorithms,
-      can influence how people understand neighborhoods, risk, and community identity.
-    </p>
+      <p class="footer-subtitle">
+        This project explores how crime data, when interpreted by algorithms,
+        can influence how people understand neighborhoods, risk, and community identity.
+      </p>
 
-    <div class="footer-meta">
-      <span>Built with D3.js</span>
-      <span>Python Data Cleaning</span>
-      <span>Boston Crime Data 2015–2022</span>
+      <div class="footer-meta">
+        <span>Built with D3.js</span>
+        <span>Python Data Cleaning</span>
+        <span>Boston Crime Data 2015–2022</span>
+      </div>
+
     </div>
-
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>
